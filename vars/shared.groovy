@@ -1,8 +1,8 @@
 //Declarative Pipeline
-@Library('Rossies-sharedlibs') _
-pipeline{
+@Library('Rossies-Sharedlibs') _
+pipeline {
 agent any
-  tools{
+  tools {
   maven"maven3.8.6"
   }
   stages{
