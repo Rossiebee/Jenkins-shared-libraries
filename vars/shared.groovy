@@ -14,6 +14,13 @@ agent any
     }
   }
 }
+stage('Build'){
+  steps{
+  shared("Build")
+  }
+}
+}
+
     
     
     
