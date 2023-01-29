@@ -1,7 +1,8 @@
 //Declarative Pipeline
 @Library('Rossies-Sharedlibs') _
+
 pipeline {
-agent any
+  agent any
   tools {
   maven"maven3.8.6"
   }
