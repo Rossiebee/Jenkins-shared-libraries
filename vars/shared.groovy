@@ -1,5 +1,5 @@
 //Declarative Pipeline
-@Library ('Rossies-Sharedlibs') _
+@Library('Rossies-Sharedlibs') _
 pipeline {
 agent any
   tools {
