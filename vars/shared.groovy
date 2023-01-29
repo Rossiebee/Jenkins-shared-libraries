@@ -1,35 +1,18 @@
-@Library('Rossies-Sharedlib') _
-pipeline {
-  agent any
-  tools {
-  maven"maven3.8.6"
-  }
-  stages{
-    stage('gitpull'){
-      steps{
-      sh "echo start of project"
-        git 'https://github.com/Rossiebee/tesla-project'
-      }
-    }
-  stage("Build"){
-  steps{
-    shared("Build")
-  }
-  }
-    stage("Execute SonarQube Report"){
-      steps{
-        shared("SonarQube Report")
-      }
-    }
-     stage("Upload Artifacts Into Nexus"){
-      steps{
-        shared("Upload Into Nexus")
-      }
+def call(String stageName){
+  
+  if ("${stageName}" == "Build")
+     {
+       sh "mvn clean package"
      }
-    //==================
-  } // stages closes
-} //Pipeline closes
-    
+  else if ("${stageName}" == "SonarQube Report")
+     {
+       sh "echo Running Code Quality Report analysis"
+       sh "mvn clean sonar:sonar"
+     }
+  else if ("${stageName}" == "Upload Into Nexus")
+     {
+       sh "mvn clean deploy"
+     }
 
 
     
